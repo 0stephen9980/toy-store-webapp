@@ -25,11 +25,7 @@ export const ServicePopover = () => {
     return [width, height - finalHeight];
   };
   return (
-    <Popover
-      closeOnBlur={true}
-      offset={({ popper }) => getOffset(popper)}
-      initialFocusRef={initRef}
-    >
+    <Popover closeOnBlur={true} initialFocusRef={initRef}>
       {({ isOpen, onClose }) => (
         <>
           <PopoverTrigger>
@@ -40,7 +36,7 @@ export const ServicePopover = () => {
               icon={<MdQuestionAnswer size={20} color="green" />}
             />
           </PopoverTrigger>
-          <Portal>
+          <Portal className=" fixed bottom-0">
             <PopoverContent className="shadow-2xl mr-8 min-h-[10rem]">
               <PopoverHeader>This is the header</PopoverHeader>
               <PopoverCloseButton />

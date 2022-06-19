@@ -1,15 +1,10 @@
-import axios from "axios";
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useReducer,
-  useState,
-} from "react";
+import { createContext, useContext, useReducer } from "react";
+import FakeData from "../localData/GenerateFakerData";
 import { CartReducer } from "./Reducer";
 
 const CartContext = createContext();
 const Context = ({ children }) => {
+  //Api call needs to be handled here
   const toysData = [
     {
       name: "Super Man",
@@ -22,6 +17,7 @@ const Context = ({ children }) => {
   console.log(toysData);
   const [state, dispatch] = useReducer(CartReducer, {
     Toys: toysData,
+    fakeData: FakeData,
     Cart: [],
   });
   return (

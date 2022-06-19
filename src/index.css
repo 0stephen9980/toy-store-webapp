@@ -45,7 +45,7 @@
         }
     }
 
-    @media (min-width: 1450px) {
+        /* @media (min-width: 1450px) {
         .responsive {
             padding: 0 15% 0 15%;
         }
@@ -55,11 +55,13 @@
         .responsive {
             padding: 0 18% 0 18%;
         }
-    }
+        }
+    
+        */
 }
 
 .slider{
-    height: 600px !important;
+    height: 800px !important;
 }
 
 @media (max-width: 900px) {

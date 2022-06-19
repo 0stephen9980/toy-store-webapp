@@ -2,6 +2,7 @@ import { SocialMediaButtons } from "../../components/SocialMediaButtons";
 import { TiPlus, TiMinus } from "react-icons/ti";
 import { Collapse, Divider } from "@chakra-ui/react";
 import { useState } from "react";
+import { CopyRight } from "../../components/CopyRight";
 
 const info = [
   {
@@ -75,7 +76,7 @@ export const FooterInfo = () => {
                         </p>
                       ))}
                   </Collapse>
-                  <Divider size="lg" />
+                  <Divider size="lg" className="border-gray-400" />
                 </div>
                 <div className="hidden lg:flex flex-col justify-center items-center">
                   {item.Services &&
@@ -92,6 +93,10 @@ export const FooterInfo = () => {
             );
           })}
         <SocialMediaButtons />
+      </div>
+      <div className="mt-16">
+        <Divider className="border-gray-300" />
+        <CopyRight />
       </div>
     </div>
   );

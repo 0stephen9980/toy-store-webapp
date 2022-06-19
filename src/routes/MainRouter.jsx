@@ -4,6 +4,7 @@ import Cart from "../pages/Cart/Cart";
 import { Home } from "../pages/HomePage/Home";
 import Profile from "../pages/MyProfile/Profile";
 import Product from "../pages/Product/Product";
+import ProductDetails from "../pages/ProductDetails/ProductDetails";
 import { AuthenticatedRoute } from "./AuthenticatedRoute";
 
 export const MainRouter = () => {
@@ -13,6 +14,7 @@ export const MainRouter = () => {
         <Route path="/" element={<AuthenticatedRoute />}>
           <Route index path="/" element={<Home />} />
           <Route index path="/products" element={<Product />} />
+          <Route index path="/product/:id" element={<ProductDetails />} />
           <Route index path="/cart" element={<Cart />} />
           <Route
             index
