@@ -7,7 +7,6 @@ const ScrollToTopButton = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      console.log(window.scrollY);
       if (window.scrollY > 100) setIsTop(false);
       else setIsTop(true);
     });

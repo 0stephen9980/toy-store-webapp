@@ -7,8 +7,7 @@ const Product = () => {
   const history = useNavigate();
 
   const ViewProduct = (item) => {
-    console.log(item);
-    // history(`/product/${item.id}`);
+    history(`/product/${item.id}`);
   };
 
   return (

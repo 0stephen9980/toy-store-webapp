@@ -1,5 +1,7 @@
 import faker from "faker";
 
+console.log("calls here");
+
 const FakeData = [...Array(100)].map(() => ({
   id: faker.datatype.uuid(),
   name: faker.commerce.productName(),

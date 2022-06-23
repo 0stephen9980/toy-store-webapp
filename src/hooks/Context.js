@@ -14,7 +14,6 @@ const Context = ({ children }) => {
       image: [],
     },
   ];
-  console.log(toysData);
   const [state, dispatch] = useReducer(CartReducer, {
     Toys: toysData,
     fakeData: FakeData,
