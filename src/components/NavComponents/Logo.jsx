@@ -1,6 +1,7 @@
 import { IconButton } from "@chakra-ui/react";
-import { MdMenu } from "react-icons/md";
-export const Logo = () => {
+import { MdMenu, MdClose } from "react-icons/md";
+import { Link } from "react-router-dom";
+export const Logo = ({ showSideBar, SideMenuIcon }) => {
   return (
     <div className="flex flex-row justify-center items-center">
       <IconButton
@@ -8,15 +9,18 @@ export const Logo = () => {
         variant="ghost"
         isRound={true}
         colorScheme="green"
-        icon={<MdMenu size={30} />}
+        icon={SideMenuIcon}
+        onClick={() => showSideBar()}
       />
 
-      <img
-        className="w-10 h-10 rounded-full cursor-pointer"
-        src={require("../../assets/Logo.png")}
-        alt="Play with joy"
-        title="Play With Joy"
-      />
+      <Link to="/">
+        <img
+          className="w-10 h-10 rounded-full cursor-pointer"
+          src={require("../../assets/Logo.png")}
+          alt="Play with joy"
+          title="Play With Joy"
+        />
+      </Link>
     </div>
   );
 };

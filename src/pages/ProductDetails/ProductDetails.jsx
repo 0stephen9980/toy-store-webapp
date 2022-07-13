@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Loading from "../../components/Loading";
 import { CartState } from "../../hooks/Context";
+import ProductImage from "../../components/ProductComponents/ProductImage";
+import ProductInfo from "../../components/ProductComponents/ProductInfo";
+import Reviews from "../../components/ProductComponents/Reviews";
 
 const ProductDetails = () => {
   const { state } = CartState();
@@ -21,12 +24,22 @@ const ProductDetails = () => {
   }, []);
 
   return (
-    <div className="responsive mt-4 min-w-[50rem]">
+    <div className="responsive mt-14">
       {loading ? (
         <Loading />
       ) : (
         <div>
-          <img src={productData?.image} alt="product" />
+          <div className="w-full grid grid-cols-1 lg:grid-cols-2 lg:gap-2">
+            <div>
+              {productData ? <ProductImage data={productData} /> : null}
+            </div>
+            <div className="w-full h-full">
+              {productData ? <ProductInfo data={productData} /> : null}
+            </div>
+          </div>
+          <div className="mt-4">
+            <Reviews />
+          </div>
         </div>
       )}
     </div>

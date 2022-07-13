@@ -9,7 +9,9 @@ export const AuthenticatedRoute = () => {
   const RenderChild = () => (
     <div className="w-full min-h-[100vh]">
       <TopNavBar />
-      <Outlet />
+      <div className="min-h-[60rem]">
+        <Outlet />
+      </div>
       <ScrollToTopButton />
       <FooterInfo />
     </div>
