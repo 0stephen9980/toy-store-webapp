@@ -60,17 +60,20 @@
         */
 }
 
-.slider{
+.slider {
     height: 800px !important;
 }
 
 @media (max-width: 900px) {
-
-    .slider{
+    .slider {
         height: 400px !important;
     }
-    .slider *> img{
-        height: 400px !important;
+}
+
+@media (min-width: 900px) and (max-width: 1150px) {
+
+    .slider {
+        height: 620px !important;
     }
 }
 

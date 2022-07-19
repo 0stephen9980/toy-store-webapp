@@ -35,7 +35,7 @@ export const FooterInfo = () => {
         {info &&
           info.map((item, index) => {
             return (
-              <div key={index} className="px-2 ">
+              <div key={index} className="px-2">
                 <h1 className="hidden lg:flex pl-2 text-xl font-semibold py-4">
                   {item.ServiceName}
                 </h1>
@@ -78,12 +78,12 @@ export const FooterInfo = () => {
                   </Collapse>
                   <Divider size="lg" className="border-gray-400" />
                 </div>
-                <div className="hidden lg:flex flex-col justify-center items-center">
+                <div className="hidden lg:flex flex-col justify-center items-center w-3/4">
                   {item.Services &&
                     item.Services.map((service, index) => (
                       <p
                         key={index}
-                        className="pl-2 my-1 py-1 w-full hover:bg-gray-300 hover:rounded-md cursor-pointer"
+                        className="pl-2 my-1 py-1 w-full hover:bg-green-300 hover:rounded-md cursor-pointer"
                       >
                         {service}
                       </p>
