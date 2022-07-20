@@ -9,15 +9,30 @@ import { BsCartFill } from "react-icons/bs";
 import { MdAccountCircle, MdSearch } from "react-icons/md";
 import { ServicePopover } from "./ServicePopover";
 import { useNavigate } from "react-router-dom";
+import { CartState } from "../../hooks/Context";
+import { useEffect } from "react";
 
 export const NavButtons = () => {
+  const {
+    state: { Cart },
+  } = CartState();
+
   const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let val = 0;
+    Cart.forEach((element) => {
+      val += element.qnty;
+    });
+    setCount(val);
+  }, [Cart, count]);
+
   const history = useNavigate();
   const IconWithBadge = () => (
     <div className="flex flex-row relative left-[9px]">
       <BsCartFill size={20} />
-      <p className="bg-white text-black text-sm relative bottom-5 right-1 rounded-full w-5 h-5">
-        1
+      <p className="bg-white text-green-400 text-sm relative bottom-5 right-1 rounded-full w-5 h-5">
+        {count}
       </p>
     </div>
   );
@@ -62,7 +77,7 @@ export const NavButtons = () => {
         </div>
         <div className="hidden lg:flex px-2" onClick={handleCartClick}>
           <IconBtn
-            Icon={count !== 0 ? <IconWithBadge /> : <BsCartFill size={20} />}
+            Icon={count > 0 ? <IconWithBadge /> : <BsCartFill size={20} />}
           />
         </div>
         <div className="px-2" onClick={handleMyProfileClick}>

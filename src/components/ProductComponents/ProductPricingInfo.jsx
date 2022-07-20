@@ -1,9 +1,22 @@
 import { Button } from "@chakra-ui/react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { CartState } from "../../hooks/Context";
 import Rating from "../Rating";
 function ProductPricingInfo({ data }) {
+  const {
+    state: { Cart },
+    dispatch,
+  } = CartState();
+  console.log(Cart.length);
   const { name, description, ratings, price, inStock } = data;
   const [quantity, setQuantity] = useState(1);
+  const [isInCart, setIsInCart] = useState(false);
+
+  useEffect(() => {
+    Cart.forEach((element) => {
+      if (element[data.id]) setIsInCart(true);
+    });
+  }, [Cart]);
 
   const Decrement = () => {
     if (quantity > 1) {
@@ -15,6 +28,7 @@ function ProductPricingInfo({ data }) {
       setQuantity(quantity + 1);
     }
   };
+
   return (
     <div className="border-[1px] border-gray-200 p-4 rounded-md flex flex-col gap-y-6 font-mono justify-center items-center w-full h-[100%] mt-5 lg:mt-0 lg:p-10 shadow-lg">
       <div>
@@ -54,8 +68,13 @@ function ProductPricingInfo({ data }) {
         <Button
           variant="outline"
           className="active:bg-green-400 border-2 border-green-400 active:text-white w-full text-green-400"
-          disabled={inStock == 0}
-          onClick={() => alert("Need to impliment the cart functionality")}
+          disabled={inStock == 0 || isInCart}
+          onClick={() =>
+            dispatch({
+              type: "ADD_TO_CART",
+              payload: { [data.id]: data, qnty: quantity },
+            })
+          }
         >
           Add To Cart
         </Button>
@@ -69,4 +88,4 @@ function ProductPricingInfo({ data }) {
   );
 }
 
-export default ProductPricingInfo;
+export default React.memo(ProductPricingInfo);

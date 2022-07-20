@@ -7,13 +7,15 @@ import ProductInfo from "../../components/ProductComponents/ProductInfo";
 import Reviews from "../../components/ProductComponents/Reviews";
 
 const ProductDetails = () => {
-  const { state } = CartState();
+  const {
+    state: { fakeData },
+  } = CartState();
   const [productData, setProductData] = useState(null);
   const [loading, setLoading] = useState(true);
   const params = useParams();
 
   useEffect(() => {
-    state.fakeData.filter((item) => {
+    fakeData.filter((item) => {
       if (item.id === params.id) {
         setTimeout(() => {
           setProductData(item);
